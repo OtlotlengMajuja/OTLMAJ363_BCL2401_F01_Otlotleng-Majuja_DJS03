@@ -92,15 +92,19 @@ setTheme() {
     };
 };
 
+updateShowMoreButton() {
+    const showMoreButton = document.querySelector('[data-list-button]');
+    showMoreButton.innerText = `Show more (${this.books.length - this.booksPerPage})`;
+    document.querySelector('[data-list-button]').disabled = (matches.length - (page * BOOKS_PER_PAGE)) > 0
+    showMoreButton.disabled = (this.matches.length - (this.page * this.booksPerPage)) <= 0;
 
-
-document.querySelector('[data-list-button]').innerText = `Show more (${books.length - BOOKS_PER_PAGE})`
-document.querySelector('[data-list-button]').disabled = (matches.length - (page * BOOKS_PER_PAGE)) > 0
-
-document.querySelector('[data-list-button]').innerHTML = `
+    showMoreButton.innerHTML = `
     <span>Show more</span>
-    <span class="list__remaining"> (${(matches.length - (page * BOOKS_PER_PAGE)) > 0 ? (matches.length - (page * BOOKS_PER_PAGE)) : 0})</span>
-`
+    <span class="list__remaining"> (${(this.matches.length - (this.page * this.booksPerPage)) > 0 ? (this.matches.length - (this.page * this.booksPerPage)) : 0})</span>
+`;
+};
+
+
 
 document.querySelector('[data-search-cancel]').addEventListener('click', () => {
     document.querySelector('[data-search-overlay]').open = false
