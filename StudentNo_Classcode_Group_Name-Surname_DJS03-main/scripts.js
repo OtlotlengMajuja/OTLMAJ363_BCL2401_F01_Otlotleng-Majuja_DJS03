@@ -20,29 +20,34 @@ init() {
     this.addEventListener();
 };
 
-const starting = document.createDocumentFragment()
+renderBooks(books) {
+    const fragment = document.createDocumentFragment();
 
-for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
-    const element = document.createElement('button')
-    element.classList = 'preview'
-    element.setAttribute('data-preview', id)
+    for (const { author, id, image, title } of books) { // Iterates over books and creates button elements for each book.
+        const element = document.createElement('button')
+        element.classList = 'preview'
+        element.setAttribute('data-preview', id)
+        // Set innerHTML of button to display book's image, title and author
+        element.innerHTML = `
+            <img
+                class="preview__image"
+                src="${image}"
+            />
+            
+            <div class="preview__info">
+                <h3 class="preview__title">${title}</h3>
+                <div class="preview__author">${this.authors[author]}</div>
+            </div>
+        `;
+        // Append button to fragment, then add it to DOM
+        fragment.appendChild(element);
+    }
 
-    element.innerHTML = `
-        <img
-            class="preview__image"
-            src="${image}"
-        />
-        
-        <div class="preview__info">
-            <h3 class="preview__title">${title}</h3>
-            <div class="preview__author">${authors[author]}</div>
-        </div>
-    `
-
-    starting.appendChild(element)
+    document.querySelector('[data-list-items]').appendChild(fragment)
 }
 
-document.querySelector('[data-list-items]').appendChild(starting)
+
+
 
 const genreHtml = document.createDocumentFragment()
 const firstGenreElement = document.createElement('option')
