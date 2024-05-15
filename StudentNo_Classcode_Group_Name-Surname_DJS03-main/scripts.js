@@ -11,6 +11,14 @@ class BookStore {
     }
 }
 
+init() {
+    this.renderBooks(this.matches.slice(0, this.booksPerPage));
+    this.populateGenres();
+    this.populateAuthors();
+    this.setTheme();
+    this.updateShowMoreButton();
+    this.addEventListener();
+};
 
 const starting = document.createDocumentFragment()
 
