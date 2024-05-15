@@ -9,7 +9,7 @@ class BookStore {
         this.page = 1;
         this.matches = books;
     }
-}
+};
 
 init() {
     this.renderBooks(this.matches.slice(0, this.booksPerPage));
@@ -41,10 +41,10 @@ renderBooks(books) {
         `;
         // Append button to fragment, then add it to DOM
         fragment.appendChild(element);
-    }
+    };
 
     document.querySelector('[data-list-items]').appendChild(fragment)
-}
+};
 
 populateGenres() {
     const genreHtml = document.createDocumentFragment();
@@ -58,26 +58,28 @@ populateGenres() {
         element.value = id;
         element.innerText = name;
         genreHtml.appendChild(element);
-    }
+    };
 
     document.querySelector('[data-search-genres]').appendChild(genreHtml)
-}
+};
 
+populateAuthors() {
+    const authorsHtml = document.createDocumentFragment();
+    const firstAuthorElement = document.createElement('option');
+    firstAuthorElement.value = 'any';
+    firstAuthorElement.innerText = 'All Authors';
+    authorsHtml.appendChild(firstAuthorElement);
 
-const authorsHtml = document.createDocumentFragment()
-const firstAuthorElement = document.createElement('option')
-firstAuthorElement.value = 'any'
-firstAuthorElement.innerText = 'All Authors'
-authorsHtml.appendChild(firstAuthorElement)
+    for (const [id, name] of Object.entries(authors)) {
+        const element = document.createElement('option');
+        element.value = id;
+        element.innerText = name;
+        authorsHtml.appendChild(element);
+    };
 
-for (const [id, name] of Object.entries(authors)) {
-    const element = document.createElement('option')
-    element.value = id
-    element.innerText = name
-    authorsHtml.appendChild(element)
-}
+    document.querySelector('[data-search-authors]').appendChild(authorsHtml);
+};
 
-document.querySelector('[data-search-authors]').appendChild(authorsHtml)
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.querySelector('[data-settings-theme]').value = 'night'
