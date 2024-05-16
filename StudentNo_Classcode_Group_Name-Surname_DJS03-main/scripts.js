@@ -20,6 +20,7 @@ class BookStore {
     };
 };
 
+
 /**
  * Initialize bookstore application
  */
@@ -32,6 +33,7 @@ init() {
     this.addEventListener();
 };
 
+
 /**
 * Get books to render based on the current page and books per page.
 * @returns {Array} The books to render.
@@ -39,6 +41,7 @@ init() {
 getBooksToRender() {
     return this.matches.slice(0, this.booksPerPage);
 }
+
 
 /**
 * Render the given books to the DOM.
@@ -51,6 +54,11 @@ renderBooks(books) {
 };
 
 
+/**
+* Create a book element.
+* @param {Object} book - The book data.
+* @returns {HTMLElement} The book element.
+*/
 createBookElement({ authors, id, image, title }) { // Iterates over books and creates button elements for each book.
     const element = document.createElement('button')
     element.classList = 'preview'
