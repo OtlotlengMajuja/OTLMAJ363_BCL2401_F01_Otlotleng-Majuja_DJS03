@@ -33,18 +33,23 @@ init() {
 };
 
 /**
-* Get the books to render based on the current page and books per page.
+* Get books to render based on the current page and books per page.
 * @returns {Array} The books to render.
 */
 getBooksToRender() {
     return this.matches.slice(0, this.booksPerPage);
 }
 
+/**
+* Render the given books to the DOM.
+* @param {Array} books - The books to render.
+*/
 renderBooks(books) {
     const fragment = document.createDocumentFragment();
     books.forEach(book => fragment.appendChild(this.createBookElement(book)));
     document.querySelector('[data-list-items]').appendChild(fragment);
 };
+
 
 createBookElement({ authors, id, image, title }) { // Iterates over books and creates button elements for each book.
     const element = document.createElement('button')
