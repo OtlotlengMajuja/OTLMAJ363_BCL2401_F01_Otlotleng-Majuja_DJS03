@@ -127,6 +127,10 @@ updateTheme(theme) {
     }
 }
 
+
+/**
+* Update the "Show more" button state and text.
+*/
 updateShowMoreButton() {
     const showMoreButton = document.querySelector('[data-list-button]');
     showMoreButton.innerText = `Show more (${this.books.length - this.booksPerPage})`;
