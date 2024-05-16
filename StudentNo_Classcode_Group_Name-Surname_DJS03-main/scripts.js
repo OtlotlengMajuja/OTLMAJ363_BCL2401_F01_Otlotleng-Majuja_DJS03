@@ -140,15 +140,23 @@ handleSettingsFormSubmit(Event) {
     document.querySelector('[data-settings-overlay]').open = false;
 }
 
-handleSearchFormSubmit(event) {
-    event.preventDefault();
+handleSearchFormSubmit(Event) {
+    Event.preventDefault();
     const formData = new FormData(event.target);
     const filters = Object.fromEntries(formData);
     this.applyFilters(filters);
     this.renderFilteredBooks();
 }
 
-
+applyFilters(filters) {
+    this.page = 1;
+    this.matches = this.books.filter(book => {
+        const genreMatch = filters.genre === 'any' || book.genres.includes(filters.genre);
+        const titleMatch = filters.title.trim() === '' || book.title.toLowerCase().includes(filters.title.toLowerCase());
+        const authorMatch = filters.author === 'any' || book.author === filters.author;
+        return genreMatch && titleMatch && authorMatch;
+    });
+}
 
 
 
