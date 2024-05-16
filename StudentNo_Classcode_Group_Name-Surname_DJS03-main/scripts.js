@@ -175,7 +175,12 @@ renderFilteredBooks() {
     document.querySelector('[data-search-overlay]').open = false;
 }
 
-
+handleShowMoreClick() {
+    const newItems = this.matches.slice(this.page * this.booksPerPage, (this.page + 1) * this.booksPerPage);
+    this.renderBooks(newItems);
+    this.page += 1;
+    this.updateShowMoreButton();
+}
 
 
 /* addEventListeners() {
