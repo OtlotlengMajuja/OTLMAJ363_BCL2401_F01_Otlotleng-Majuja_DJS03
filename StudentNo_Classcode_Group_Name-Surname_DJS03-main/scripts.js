@@ -120,8 +120,26 @@ addEventListeners() {
     document.querySelector('[data-list-items]').addEventListener('click', this.handleBookClick.bind(this));
 }
 
+closeSearchOverlay() {
+    document.querySelector('[data-search-overlay]').open = false;
+}
 
+closeSettingsOverlay() {
+    document.querySelector('[data-settings-overlay]').open = false;
+}
 
+openSearchOverlay() {
+    document.querySelector('[data-search-overlay]').open = true;
+    document.querySelector('[data-search-title]').focus();
+}
+
+openSettingsOverlay() {
+    document.querySelector('[data-settings-overlay]').open = true;
+}
+
+closeActiveOverlay() {
+    document.querySelector('[data-list-active]').open = false;
+}
 
 
 
