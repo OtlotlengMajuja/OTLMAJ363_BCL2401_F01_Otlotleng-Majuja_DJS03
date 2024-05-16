@@ -158,7 +158,22 @@ applyFilters(filters) {
     });
 }
 
+renderFilteredBooks() {
+    const messageElement = document.querySelector('[data-list-message]');
+    const listItemsElement = document.querySelector('[data-list-items]');
 
+    if (this.matches.length < 1) {
+        messageElement.classList.add('list__message_show');
+    } else {
+        messageElement.classList.remove('list__message_show');
+    }
+
+    listItemsElement.innerHTML = '';
+    this.renderBooks(this.getBooksToRender());
+    this.updateShowMoreButton();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('[data-search-overlay]').open = false;
+}
 
 
 
