@@ -206,7 +206,8 @@ openBookDetail(book) {
     document.querySelector('[data-list-description]').innerText = book.description;
 }
 
-
+const bookStore = new BookStore(books, authors, genres, BOOKS_PER_PAGE);
+bookStore.init();
 
 
 /* addEventListeners() {
