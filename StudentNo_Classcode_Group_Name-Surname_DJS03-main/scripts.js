@@ -138,12 +138,15 @@ handleSettingsFormSubmit(Event) {
     const { theme } = Object.fromEntries(formData);
     this.updateTheme(theme);
     document.querySelector('[data-settings-overlay]').open = false;
-
 }
 
-
-
-
+handleSearchFormSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const filters = Object.fromEntries(formData);
+    this.applyFilters(filters);
+    this.renderFilteredBooks();
+}
 
 
 
