@@ -32,7 +32,10 @@ init() {
     this.addEventListener();
 };
 
-
+/**
+* Get the books to render based on the current page and books per page.
+* @returns {Array} The books to render.
+*/
 getBooksToRender() {
     return this.matches.slice(0, this.booksPerPage);
 }
