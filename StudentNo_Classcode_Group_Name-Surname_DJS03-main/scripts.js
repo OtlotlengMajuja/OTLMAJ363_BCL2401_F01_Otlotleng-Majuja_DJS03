@@ -182,6 +182,25 @@ handleShowMoreClick() {
     this.updateShowMoreButton();
 }
 
+handleBookClick(Event) {
+    const pathArray = Array.from(Event.composedPath());
+    let activeBook = null;
+
+    for (const node of pathArray) {
+        if (node.dataset?.preview) {
+            activeBook = this.books.find(book => book.id === node.dataset.preview);
+            if (activeBook) break;
+        }
+    }
+    if (activeBook) {
+        this.openBookDetail(activeBook);
+    }
+}
+
+
+
+
+
 
 /* addEventListeners() {
     document.querySelector('[data-search-cancel]').addEventListener('click', () => {
