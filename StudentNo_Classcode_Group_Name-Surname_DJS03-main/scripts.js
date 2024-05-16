@@ -20,6 +20,9 @@ class BookStore {
     };
 };
 
+/**
+ * Initialize bookstore application
+ */
 init() {
     this.renderBooks(this.getBooksToRender());
     this.populateSelectOptions('[data-search-genres]', this.genres, 'All Genres');
@@ -28,6 +31,7 @@ init() {
     this.updateShowMoreButton();
     this.addEventListener();
 };
+
 
 getBooksToRender() {
     return this.matches.slice(0, this.booksPerPage);
