@@ -78,6 +78,13 @@ createBookElement({ authors, id, image, title }) { // Iterates over books and cr
     return element;
 };
 
+
+/**
+* Populate a select element with options.
+* @param {string} selector - The selector of the select element.
+* @param {Object} options - The options to populate.
+* @param {string} defaultOptionText - The text for the default option.
+*/
 populateSelectOptions(selector, options, defaultOptionText) {
     const fragment = document.createDocumentFragment();
     const defaultOption = document.createElement('option');
