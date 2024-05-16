@@ -71,16 +71,6 @@ setTheme() {
     const theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
     this.updateTheme(theme);
     document.querySelector('[data-settings-theme]').value = theme;
-
-    /* if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector('[data-settings-theme]').value = 'night'
-        document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
-        document.documentElement.style.setProperty('--color-light', '10, 10, 20');
-    } else {
-        document.querySelector('[data-settings-theme]').value = 'day'
-        document.documentElement.style.setProperty('--color-dark', '10, 10, 20');
-        document.documentElement.style.setProperty('--color-light', '255, 255, 255');
-    }; */
 };
 
 updateTheme(theme) {
@@ -96,7 +86,7 @@ updateTheme(theme) {
 updateShowMoreButton() {
     const showMoreButton = document.querySelector('[data-list-button]');
     showMoreButton.innerText = `Show more (${this.books.length - this.booksPerPage})`;
-    showMoreButton.disabled = (this.matches.length - (this.page * this.booksPerPage)) < 1;
+    showMoreButton.disabled = (this.matches.length - (this.page * this.booksPerPage)) <= 0;
 
     showMoreButton.innerHTML = `
     <span>Show more</span>
@@ -142,6 +132,14 @@ closeActiveOverlay() {
 }
 
 
+handleSettingsFormSubmit(Event) {
+    Event.preventDefault();
+    const formData = new FormData(Event.target);
+    const { theme } = Object.fromEntries(formData);
+    this.updateTheme(theme);
+    document.querySelector('[data-settings-overlay]').open = false;
+
+}
 
 
 
