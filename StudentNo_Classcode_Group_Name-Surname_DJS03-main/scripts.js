@@ -103,12 +103,20 @@ populateSelectOptions(selector, options, defaultOptionText) {
 }
 
 
+/**
+* Set the initial theme based on user preferences.
+*/
 setTheme() {
     const theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
     this.updateTheme(theme);
     document.querySelector('[data-settings-theme]').value = theme;
 };
 
+
+/**
+* Update the theme of the application.
+* @param {string} theme - The theme to set (either 'day' or 'night').
+*/
 updateTheme(theme) {
     if (theme === 'night') {
         document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
